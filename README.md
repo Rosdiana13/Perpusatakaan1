@@ -75,8 +75,6 @@ Database ini dipakai untuk mengelola sistem perpustakaan, yang mencakup:
 - Pinjam Offline - Petugas (Jika Anggota langsung pinjam di tempat)
 - Logout - Anggota & Petugas
 
-**Alur**
-
 **Penerapan Konsep OOP**
 
 Sistem perpustakaan yang dibangun telah menerapkan konsep Object-Oriented Programming (OOP) melalui penggunaan class Controller dan Model di Laravel. Setiap entitas seperti Anggota, Petugas, Buku, dan Peminjaman direpresentasikan sebagai object melalui Eloquent Model. Proses bisnis dibungkus dalam method controller sehingga menerapkan encapsulation. Pewarisan terjadi melalui controller yang mewarisi class dasar Laravel, dan polymorphism terjadi saat berbagai controller dipanggil melalui mekanisme routing yang seragam.
