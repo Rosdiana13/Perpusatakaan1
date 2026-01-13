@@ -83,6 +83,7 @@ Sistem perpustakaan yang dibangun telah menerapkan konsep Object-Oriented Progra
 Contoh bebrapa yang digunakan dicode:
 1. encapsulation
 <img width="499" height="40" alt="image" src="https://github.com/user-attachments/assets/4c072bbc-5f26-4ea1-9196-a8ebe8a46699" />
+
 ini dibungkus dalam "PeminjamanController" yang dimana querynya tidak bisa akses langsung karean harus lewat method ini terlebih dahulu.
 3. polymorphism
 <img width="841" height="556" alt="image" src="https://github.com/user-attachments/assets/ab33b4c8-9b79-4683-98b3-938ccf0e6486" />
