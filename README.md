@@ -66,4 +66,28 @@ Database ini dipakai untuk mengelola sistem perpustakaan, yang mencakup:
 | peminjaman → detail_peminjaman   | One to Many |        |
 | katalog_buku → detail_peminjaman | One to Many |        |
 
+**Fitur Aplikasi/Website**
+- Home - Anggota & Petugas
+- List Peminjaman - Anggota
+- Input Buku - Petugas
+- List Online - Petugas
+- List All Peminjaman - Petugas
+- Pinjam Offline - Petugas (Jika Anggota langsung pinjam di tempat)
+- Logout - Anggota & Petugas
+
+**Alur**
+
+**Penerapan Konsep OOP**
+Sistem perpustakaan yang dibangun telah menerapkan konsep Object-Oriented Programming (OOP) melalui penggunaan class Controller dan Model di Laravel. Setiap entitas seperti Anggota, Petugas, Buku, dan Peminjaman direpresentasikan sebagai object melalui Eloquent Model. Proses bisnis dibungkus dalam method controller sehingga menerapkan encapsulation. Pewarisan terjadi melalui controller yang mewarisi class dasar Laravel, dan polymorphism terjadi saat berbagai controller dipanggil melalui mekanisme routing yang seragam.
+
+Contoh bebrapa yang digunakan dicode:
+1. encapsulation
+   <img width="499" height="40" alt="image" src="https://github.com/user-attachments/assets/4c072bbc-5f26-4ea1-9196-a8ebe8a46699" />
+ini dibungkus dalam "PeminjamanController" yang dimana querynya tidak bisa akses langsung karean harus lewat method ini terlebih dahulu.
+3. polymorphism
+<img width="841" height="556" alt="image" src="https://github.com/user-attachments/assets/ab33b4c8-9b79-4683-98b3-938ccf0e6486" />
+olymorphism dalam sistem ini terlihat pada mekanisme routing Laravel, di mana semua URL diproses menggunakan pola yang sama melalui Route::get() dan Route::post(), tetapi masing-masing memanggil controller dan method yang berbeda. Meskipun cara pemanggilannya sama, setiap controller memiliki perilaku yang berbeda, seperti LoginController, PeminjamanController, dan KatalogBukuController, sehingga menunjukkan penerapan konsep polymorphism dalam OOP.
+
+
+
 
