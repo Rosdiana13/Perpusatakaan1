@@ -18,6 +18,7 @@
                 <th>Alamat</th>
                 <th>Tgl Pinjam</th>
                 <th>Tgl Kembali</th>
+                <th>Status</th>   <!-- ✅ kolom baru -->
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -34,6 +35,22 @@
                         <td><?php echo e($pinjam->tanggal_pinjam); ?></td>
                         <td><?php echo e($pinjam->tanggal_kembali); ?></td>
 
+                        <!-- ✅ STATUS -->
+                        <td>
+                            <?php if($pinjam->status == 'dipinjam'): ?>
+                                <?php if(now()->gt($pinjam->tanggal_kembali)): ?>
+                                    <span class="badge bg-danger">Terlambat</span>
+                                <?php else: ?>
+                                    <span class="badge bg-warning">Dipinjam</span>
+                                <?php endif; ?>
+                            <?php elseif($pinjam->status == 'terlambat'): ?>
+                                <span class="badge bg-danger">Terlambat</span>
+                            <?php else: ?>
+                                <span class="badge bg-success">Dikembalikan</span>
+                            <?php endif; ?>
+                        </td>
+
+                        <!-- ✅ AKSI -->
                         <td>
                             <?php if($pinjam->status == 'dipinjam'): ?>
                                 <form action="<?php echo e(url('/peminjaman/kembalikan/'.$pinjam->id)); ?>" method="POST">
@@ -47,6 +64,7 @@
                                 <span class="badge bg-secondary">Selesai</span>
                             <?php endif; ?>
                         </td>
+
                     </tr>
                 <?php endforeach; ?>
             <?php endforeach; ?>
