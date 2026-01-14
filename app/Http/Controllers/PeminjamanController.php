@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use App\Models\Anggota;
 // memanggil Facade Database Laravel
 use DB;
+// Extends ini apa turnunan
 
 class PeminjamanController extends Controller
 {
@@ -195,11 +196,19 @@ class PeminjamanController extends Controller
         try {
             $peminjaman = Peminjaman::with('detail.buku')->findOrFail($id);
 
-            // ubah status
-            $peminjaman->status = 'dikembalikan';
+            // Ambil tanggal sekarang
+            $today = now();
+
+            // Cek apakah terlambat
+            if ($today->gt($peminjaman->tanggal_kembali)) {
+                $peminjaman->status = 'terlambat';
+            } else {
+                $peminjaman->status = 'dikembalikan';
+            }
+
             $peminjaman->save();
 
-            // kembalikan stok buku
+            // Kembalikan stok buku
             foreach ($peminjaman->detail as $d) {
                 $buku = $d->buku;
                 $buku->stok += $d->jumlah;
@@ -214,5 +223,6 @@ class PeminjamanController extends Controller
             return back()->with('error','Gagal mengembalikan buku');
         }
     }
+
 
 }
